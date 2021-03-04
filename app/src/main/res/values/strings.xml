@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="game_title">Example text</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_msg">Another try?</string>
+    <string name="new_game">New Game</string>
+    <string name="score">SCORE</string>
+    <string name="score_example">1023</string>
+    <string name="play_new_game">Play New Game</string>
+    <string name="manage_scores">Manage Scores</string>
+    <string name="_2048_logo">2048 Logo</string>
+    <string name="welcome_to_my_2048_game">WELCOME TO MY 2048 GAME!!!</string>
+    <string name="made_by">MADE BY JHONNY</string>
+    <string name="time">Time :</string>
+    <string name="slogan">Join the number to get the 2048 tile!</string>
+    <string name="example_text">Example text</string>
+    <string name="put_your_name">Put your name :</string>
+    <string name="name">Name</string>
+    <string name="search_button">Search</string>
+    <string name="search_by_score">Search by Score</string>
+    <string name="search_by_name">Search by Name</string>
+</resources>
