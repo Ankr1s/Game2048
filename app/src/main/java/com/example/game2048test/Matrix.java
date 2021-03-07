@@ -33,19 +33,11 @@ public class Matrix {
         mergeSpots = new HashSet<Spot>();
 
         newSpot = new Spot(0, 0);
-
-        // Generate 2 random spots
         for (int i = 0; i < 5; ++i) {
             spawn(2);
         }
     }
 
-    /**
-     * Generate a square with the distribution:
-     *      80% = 2
-     *      15% = 4
-     *      5% = 'empty'
-     */
     public boolean generate() {
         int v = random.nextInt(100);
         if (0 <= v && v <= 79) {
@@ -238,7 +230,6 @@ public class Matrix {
 
                 merged = false;
                 if (farthest != -1) {
-                    // Ok merge
                     if (numbers[i][column] == numbers[farthest][column]) {
                         numbers[i][column] += numbers[farthest][column];
                         score = numbers[i][column];

@@ -2,6 +2,7 @@ package com.example.game2048test;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -31,7 +32,6 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     protected void onResume() {
-        /*bestScore.setScore(GamePreferences.getBestScore());*/
         super.onResume();
     }
 
@@ -54,6 +54,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         chronometer = findViewById(R.id.chronometer);
         actualScore = findViewById(R.id.main_actual_score);
         bestScore = findViewById(R.id.main_best_score);
+        bestScore.setScore(getBestScore());
         matrixView = findViewById(R.id.matrix_view);
         matrixView.setMoveListener(new MoveListener() {
             @Override
@@ -65,7 +66,6 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                         actualScore.addScore(score);
                         if (actualScore.getScore() > bestScore.getScore()) {
                             bestScore.setScore(actualScore.getScore());
-                           /* GamePreferences.saveBestScore(bestScore.getScore());*/
                         }
                         if (score >= 2048) {
                             displayCongratsDialog();
@@ -74,6 +74,9 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 }
             }
         });
+
+
+
 
         chronometer.setBase(SystemClock.elapsedRealtime());
         chronometer.start();
@@ -116,6 +119,26 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
 
 
 
+    private int getBestScore(){
+        ScoreDbHelper scoreDbHelper = new ScoreDbHelper(this,"scoreDb",null,1);
+        SQLiteDatabase db = scoreDbHelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM scores ORDER BY score DESC" ,null);
+
+        if (cursor.moveToFirst()){
+            cursor.moveToFirst();
+            return cursor.getInt(2);
+        }
+
+
+        db.close();
+        scoreDbHelper.close();
+
+        return 0;
+    }
+
+
+
     private void onNewGameClick(Score score) {
         if(score != null){
             insertScore(score);
@@ -147,6 +170,8 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Score score = new Score(name.getText().toString(),actualScore.getScore(),chronometer.getText().toString());
+                onNewGameClick(score);
                 dialog.dismiss();
             }
         });
@@ -155,7 +180,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Score score = new Score(name.getText().toString(),String.valueOf(actualScore.getScore()),chronometer.getText().toString());
+                Score score = new Score(name.getText().toString(),actualScore.getScore(),chronometer.getText().toString());
                 onNewGameClick(score);
                dialog.dismiss();
             }
@@ -190,7 +215,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Score score = new Score(name.getText().toString(),String.valueOf(actualScore.getScore()),chronometer.getText().toString());
+                Score score = new Score(name.getText().toString(),actualScore.getScore(),chronometer.getText().toString());
                 onNewGameClick(score);
                 dialog.dismiss();
             }

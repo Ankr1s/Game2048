@@ -16,7 +16,7 @@ public class ScoreDbHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE scores(_id integer primary key autoincrement," +
                 " name TEXT," +
-                " score TEXT," +
+                " score INTEGER," +
                 " time TEXT)");
 
     }

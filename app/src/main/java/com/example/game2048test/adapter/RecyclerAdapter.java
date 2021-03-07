@@ -39,7 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         Score score = scoreList.get(position);
         holder.tvId.setText(String.valueOf(score.getId()));
         holder.tvName.setText(score.getName());
-        holder.tvScore.setText(score.getScore());
+        holder.tvScore.setText(String.valueOf(score.getScore()));
         holder.tvTime.setText(score.getTime());
 
     }

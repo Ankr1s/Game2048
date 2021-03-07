@@ -167,7 +167,7 @@ public class ScoreManagement  extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM scores",null);
         if (cursor.moveToFirst()){
             do {
-                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getInt(2),cursor.getString(3));
                 scores.add(score);
             } while (cursor.moveToNext());
         }
@@ -186,7 +186,7 @@ public class ScoreManagement  extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM scores WHERE name = " + "'"+ name +"'"   ,null);
         if (cursor.moveToFirst()){
             do {
-                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getInt(2),cursor.getString(3));
                 scores.add(score);
             } while (cursor.moveToNext());
         }
@@ -204,7 +204,7 @@ public class ScoreManagement  extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM scores WHERE score "+ rationalOp + " '"+ scoreSearch +"'"   ,null);
         if (cursor.moveToFirst()){
             do {
-                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getInt(2),cursor.getString(3));
                 scores.add(score);
             } while (cursor.moveToNext());
         }
@@ -227,7 +227,7 @@ public class ScoreManagement  extends AppCompatActivity {
         }
         if (cursor.moveToFirst()){
             do {
-                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                Score score = new Score(cursor.getInt(0),cursor.getString(1), cursor.getInt(2),cursor.getString(3));
                 scores.add(score);
             } while (cursor.moveToNext());
         }

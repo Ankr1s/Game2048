@@ -4,7 +4,7 @@ public class Score {
 
     private int id;
     private String name;
-    private String score;
+    private int score;
     private String time;
 
 
@@ -12,13 +12,13 @@ public class Score {
     public Score() {
     }
 
-    public Score(String name, String score, String time) {
+    public Score(String name, int score, String time) {
         this.name = name;
         this.score = score;
         this.time = time;
     }
 
-    public Score(int id, String name, String score, String time) {
+    public Score(int id, String name, int score, String time) {
         this.id = id;
         this.name = name;
         this.score = score;
@@ -33,7 +33,7 @@ public class Score {
         return name;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
